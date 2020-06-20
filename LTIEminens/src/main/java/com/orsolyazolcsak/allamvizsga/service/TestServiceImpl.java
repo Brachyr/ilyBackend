@@ -1,32 +1,33 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
-import com.orsolyazolcsak.allamvizsga.model.Test;
-import com.orsolyazolcsak.allamvizsga.repository.TestRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import com.orsolyazolcsak.allamvizsga.model.Test;
+import com.orsolyazolcsak.allamvizsga.repository.TestRepository;
 
 @Service
-public class TestServiceImpl implements TestService{
+public class TestServiceImpl implements TestService {
 
-    @Autowired
-    private TestRepository repository;
+  @Autowired
+  private TestRepository repository;
 
-    @Override
-    public Set<Test> findAll() {
-        return new HashSet<>(repository.findAll());
-    }
+  @Override
+  public List<Test> findAll() {
+    return new ArrayList(this.repository.findAll());
+  }
 
-    @Override
-    public void createNewTest(Test newTest) {
-        repository.save(newTest);
-    }
+  @Override
+  public void createNewTest(Test newTest) {
+    this.repository.save(newTest);
+  }
 
-    @Override
-    public Optional<Test> findById(Long id) {
-        return repository.findById(id);
-    }
+  @Override
+  public Optional<Test> findRunning() {
+    return this.findAll().stream().filter(t -> "on".equals(t.getState())).findFirst();
+  }
 }

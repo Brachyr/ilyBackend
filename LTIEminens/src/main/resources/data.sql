@@ -1,7 +1,7 @@
-insert into test (id, name) values (1001, 'This is the first test');
-insert into test (id, name) values (1002, 'This is the second test');
-insert into test (id, name) values (1003, 'This is the third test');
-insert into test (id, name) values (1004, 'This is the 4th test');
+insert into test (id, name, state) values (1001, 'This is the first test', 'on');
+insert into test (id, name, state) values (1002, 'This is the second test', 'planned');
+insert into test (id, name, state) values (1003, 'This is the third test', 'off');
+insert into test (id, name, state) values (1004, 'This is the 4th test', 'off');
 
 insert into Problem (problem_id, difficulty, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (1, 'easy', 1001, 'Ki vagyok en?', 'Orsi', 'Zsorsi', 'Porsi', 'Florsi');
 insert into Problem (problem_id, difficulty, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (2, 'easy', 1001, 'Hany eves vagyok?', '26', '11', '45', '36');

@@ -23,6 +23,9 @@ public class Test {
 	@Column(name = "name")
 	private String name;
 	
+	@Column(name = "state")
+	private String state;
+	
 	public Test() {
 
 	}
@@ -46,5 +49,12 @@ public class Test {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+    public String getState() {
+      return this.state;
+    }
+    
+    public void setState(String state) {
+      this.state = state;
+    }
 }

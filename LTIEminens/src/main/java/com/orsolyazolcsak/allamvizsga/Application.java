@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.service.ProblemService;
 import com.orsolyazolcsak.allamvizsga.service.UserService;
 
@@ -26,8 +27,8 @@ public class Application implements CommandLineRunner {
   @Override
   public void run(String... arg0) throws Exception {
 
-    List<String> problems = this.problemService.getAllProblemsByTest(1001);
-    for (String problem : problems) {
+    List<Problem> problems = this.problemService.getAllProblemsByTest(1001);
+    for (Problem problem : problems) {
       System.out.println("Easy questions => " + problem);
     }
 

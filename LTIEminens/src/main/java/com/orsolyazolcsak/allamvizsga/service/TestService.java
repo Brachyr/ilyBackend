@@ -1,14 +1,14 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.orsolyazolcsak.allamvizsga.model.Test;
 
-import java.util.Optional;
-import java.util.Set;
-
 public interface TestService {
-    Set<Test> findAll();
+  List<Test> findAll();
 
-    void createNewTest(Test newTest);
+  void createNewTest(Test newTest);
 
-    Optional<Test> findById(Long id);
+  Optional<Test> findRunning();
 }

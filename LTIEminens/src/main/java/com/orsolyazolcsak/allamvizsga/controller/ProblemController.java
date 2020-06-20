@@ -1,8 +1,11 @@
 package com.orsolyazolcsak.allamvizsga.controller;
 
 import com.orsolyazolcsak.allamvizsga.model.Problem;
+import com.orsolyazolcsak.allamvizsga.model.Test;
 import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
 import com.orsolyazolcsak.allamvizsga.service.ProblemService;
+import com.orsolyazolcsak.allamvizsga.service.TestService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +19,13 @@ public class ProblemController {
 
     @Autowired
     private ProblemService problemService;
+    
+    @Autowired
+    private TestService testService;
 
     @GetMapping
-    public Set<Problem> getTests() {
-        return problemService.findAll();
+    public List<Problem> getTests() {
+        return problemService.getAllProblemsByTest(testService.findRunning().map(Test::getId).orElse(null));
     }
 
     @PostMapping

@@ -1,6 +1,9 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,48 +12,37 @@ import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
 
 @Service
-public class ProblemServiceImpl implements ProblemService{
+public class ProblemServiceImpl implements ProblemService {
 
-	@Autowired
-	private ProblemRepository repository;
+  @Autowired
+  private ProblemRepository repository;
 
-	@Override
-	public Set<Problem> findAll() {
-		return new HashSet<>(repository.findAll());
-	}
+  @Override
+  public Set<Problem> findAll() {
+    return new HashSet<>(this.repository.findAll());
+  }
 
-	@Override
-	public Problem createNewProblem(Problem newProblem) {
-		repository.save(newProblem);
-		return newProblem;
-	}
+  @Override
+  public Problem createNewProblem(Problem newProblem) {
+    this.repository.save(newProblem);
+    return newProblem;
+  }
 
-	@Override
-	public Optional<Problem> findById(Long id) {
-		return repository.findById(id);
-	}
+  @Override
+  public Optional<Problem> findById(Long id) {
+    return this.repository.findById(id);
+  }
 
+  public List<Problem> getAllProblemsByTest(long testId) {
+    return this.repository.findByTestId(testId);
+  }
 
-	public List<String> getAllProblemsByTest(long testId ){
-		List<String> result = new ArrayList<String>();
-		List<Problem> problems = repository.findByTestId(testId);
-		for (Problem problem: problems) {
-			result.add(problem.getQuestion());
-		}
-		return result;
-	}
+  @Override
+  public void deleteById(long id) {
+    this.repository.deleteById(id);
+  }
 
-	@Override
-	public void deleteById(long id) {
-		repository.deleteById(id);
-	}
-
-	public List<String> getAllProblemsByDifficulty(String difficulty) {
-		List<String> result = new ArrayList<String>();
-        List<Problem> problems = repository.findByDifficulty(difficulty);
-        for (Problem problem : problems) {
-            result.add(problem.getQuestion());
-        }
-        return result;
-	}
+  public List<Problem> getAllProblemsByDifficulty(String difficulty) {
+    return this.repository.findByDifficulty(difficulty);
+  }
 }
