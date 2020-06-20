@@ -1,57 +1,42 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role {
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "role_Sequence")
-	@SequenceGenerator(name = "role_Sequence", sequenceName = "ROLE_SEQ")
-	private Long id;
-	
-	@Column(name = "description")
-	private String description;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            mappedBy = "role")
-    private List<User> user;
-	
-	public Role() {
-		
-	}
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_Sequence")
+  @SequenceGenerator(name = "role_Sequence", sequenceName = "ROLE_SEQ")
+  private Long id;
 
-	public Long getId() {
-		return id;
-	}
+  @Column(name = "description")
+  private String description;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public Role() {
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  }
 
-	public List<User> getUser() {
-		return user;
-	}
+  public Long getId() {
+    return this.id;
+  }
 
-	public void setUser(List<User> user) {
-		this.user = user;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public String getDescription() {
+    return this.description;
+  }
 }

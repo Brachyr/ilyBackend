@@ -1,130 +1,161 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.*;
-
 import static com.orsolyazolcsak.allamvizsga.service.UserServiceImpl.generateSalt;
 import static com.orsolyazolcsak.allamvizsga.service.UserServiceImpl.hashPassword;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 @Entity
-@Table(name="user_eminens")
+@Table(name = "user_eminens")
 public class User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "user_Sequence")
-	@SequenceGenerator(name = "user_Sequence", sequenceName = "USER_SEQ")
-	private Long id;
-	
-	@Column(name = "username")
-	private String username;
-	
-	@Column(name = "password")
-	private  String password;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_Sequence")
+  @SequenceGenerator(name = "user_Sequence", sequenceName = "USER_SEQ")
+  private Long id;
 
-	@Column(name = "salt", length = 4000)
-	private  String salt;
-	
-	@Column(name = "full_name")
-	private String fullName;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "role_id", nullable = false)
-		private Role role;
+  @Column(name = "username")
+  private String username;
 
-	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.LAZY,
-	            mappedBy = "user")
-		private List<Answer> answer;
-		
-	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.LAZY,
-	            mappedBy = "user")
-		private List<UsedHelp> usedHelp;
-	
-	public User() {
-		
-	}
+  @Column(name = "password")
+  private String password;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @Column(name = "salt", length = 4000)
+  private String salt;
 
-	public String getPassword() {
-		return password;
-	}
+  @Column(name = "full_name")
+  private String fullName;
 
-	public String getSalt() {
-		return salt;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "role_id", nullable = false)
+  private Role role;
 
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+  private List<Answer> answer;
 
-	public List<Answer> getAnswer() {
-		return answer;
-	}
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+  private List<UsedHelp> usedHelp;
 
-	public void setAnswer(List<Answer> answer) {
-		this.answer = answer;
-	}
+  public User() {
 
-	public List<UsedHelp> getUsedHelp() {
-		return usedHelp;
-	}
+  }
 
-	public void setUsedHelp(List<UsedHelp> usedHelp) {
-		this.usedHelp = usedHelp;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public Long getId() {
-		return id;
-	}
+  public String getPassword() {
+    return this.password;
+  }
 
-	public String getFullName() {
-		return fullName;
-	}
+  public String getSalt() {
+    return this.salt;
+  }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+  public void setSalt(String salt) {
+    this.salt = salt;
+  }
 
-	public Role getRole() {
-		return role;
-	}
+  public List<Answer> getAnswer() {
+    return this.answer;
+  }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+  public void setAnswer(List<Answer> answer) {
+    this.answer = answer;
+  }
 
-	public String getUsername() {
-		return username;
-	}
+  public List<UsedHelp> getUsedHelp() {
+    return this.usedHelp;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public void setUsedHelp(List<UsedHelp> usedHelp) {
+    this.usedHelp = usedHelp;
+  }
 
-	public void setPassword(String password) {
+  public Long getId() {
+    return this.id;
+  }
 
-		Optional<String> salt = generateSalt(512);
+  public String getFullName() {
+    return this.fullName;
+  }
 
-		if(salt.isPresent()){
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
 
-			Optional<String> securedPassword = hashPassword(password, salt.get());
+  public Role getRole() {
+    return this.role;
+  }
 
-			if (securedPassword.isPresent()){
-				this.salt = salt.get();
-				this.password = securedPassword.get();
-			}
-			else{
-				System.out.println("Error in setPassword: hashPassword");
-			}
-		}
-		else{
-			System.out.println("Error in setPassword: generateSalt");
-		}
+  public void setRole(Role role) {
+    this.role = role;
+  }
 
-	}
+  public String getUsername() {
+    return this.username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public void setPassword(String password) {
+
+    Optional<String> salt = generateSalt(512);
+
+    if (salt.isPresent()) {
+
+      Optional<String> securedPassword = hashPassword(password, salt.get());
+
+      if (securedPassword.isPresent()) {
+        this.salt = salt.get();
+        this.password = securedPassword.get();
+      } else {
+        System.out.println("Error in setPassword: hashPassword");
+      }
+    } else {
+      System.out.println("Error in setPassword: generateSalt");
+    }
+
+  }
+
+  /**
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("User [id=");
+    builder.append(this.id);
+    builder.append(", username=");
+    builder.append(this.username);
+    builder.append(", password=");
+    builder.append(this.password);
+    builder.append(", salt=");
+    builder.append(this.salt);
+    builder.append(", fullName=");
+    builder.append(this.fullName);
+    builder.append(", role=");
+    builder.append(this.role);
+    builder.append(", answer=");
+    builder.append(this.answer);
+    builder.append(", usedHelp=");
+    builder.append(this.usedHelp);
+    builder.append("]");
+    return builder.toString();
+  }
 }

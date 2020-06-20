@@ -23,11 +23,6 @@ public class Test {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            mappedBy = "test")
-    private List<Problem> problems;
-	
 	public Test() {
 
 	}
@@ -51,14 +46,5 @@ public class Test {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<Problem> getProblems() {
-		return problems;
-	}
-
-	public void setProblems(List<Problem> problems) {
-		this.problems = problems;
-	}
-
 
 }
