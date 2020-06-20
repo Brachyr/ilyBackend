@@ -45,9 +45,9 @@ public class ProblemServiceImpl implements ProblemService{
 		repository.deleteById(id);
 	}
 
-	public List<String> getAllProblemsByDifficulty(long difficultyId) {
+	public List<String> getAllProblemsByDifficulty(String difficulty) {
 		List<String> result = new ArrayList<String>();
-        List<Problem> problems = repository.findByDifficultyId(difficultyId);
+        List<Problem> problems = repository.findByDifficulty(difficulty);
         for (Problem problem : problems) {
             result.add(problem.getQuestion());
         }

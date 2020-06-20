@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.orsolyazolcsak.allamvizsga.model.User;
 import com.orsolyazolcsak.allamvizsga.service.LoginUserDao;
-import com.orsolyazolcsak.allamvizsga.service.RoleService;
 import com.orsolyazolcsak.allamvizsga.service.UserService;
 
 @RestController
@@ -21,12 +20,9 @@ public class LoginController {
 
   private final UserService userService;
 
-  private final RoleService roleService;
-
   @Autowired
-  public LoginController(UserService userService, RoleService roleService) {
+  public LoginController(UserService userService) {
     this.userService = userService;
-    this.roleService = roleService;
   }
 
   @CrossOrigin(origins = "http://localhost:3000")

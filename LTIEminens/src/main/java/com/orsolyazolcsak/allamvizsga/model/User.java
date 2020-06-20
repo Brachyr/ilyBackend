@@ -39,9 +39,8 @@ public class User {
   @Column(name = "full_name")
   private String fullName;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "role_id", nullable = false)
-  private Role role;
+  @JoinColumn(name = "role", nullable = false)
+  private String role;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
   private List<Answer> answer;
@@ -97,11 +96,11 @@ public class User {
     this.fullName = fullName;
   }
 
-  public Role getRole() {
+  public String getRole() {
     return this.role;
   }
 
-  public void setRole(Role role) {
+  public void setRole(String role) {
     this.role = role;
   }
 

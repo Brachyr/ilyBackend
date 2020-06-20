@@ -14,7 +14,7 @@ public interface ProblemService {
 
 	Optional<Problem> findById(Long id);
 
-	public List<String> getAllProblemsByDifficulty(long difficultyId);
+	public List<String> getAllProblemsByDifficulty(String difficulty);
 
 	public List<String> getAllProblemsByTest(long testId);
 

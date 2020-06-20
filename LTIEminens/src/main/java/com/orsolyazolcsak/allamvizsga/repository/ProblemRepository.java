@@ -10,7 +10,7 @@ import com.orsolyazolcsak.allamvizsga.model.Problem;
 
 @Repository
 public interface ProblemRepository extends JpaRepository<Problem, Long> {
-	List<Problem> findByDifficultyId(long difficultyId);
+	List<Problem> findByDifficulty(String difficultyId);
 	List<Problem> findByTestId(long testId);
 
 }

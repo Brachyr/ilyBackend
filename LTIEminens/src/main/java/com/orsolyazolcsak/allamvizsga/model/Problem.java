@@ -20,143 +20,136 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Problem {
-	@Id
-	@Column(name = "problem_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "problem_Sequence")
-	@SequenceGenerator(name = "problem_Sequence", sequenceName = "PROBLEM_SEQ")
-    private Long id;
-	
-	@Column(name = "question")
-	private String question;
-	
-	@Column(name = "correct_answer")
-	private String correctAnswer;
-	
-	@Column(name = "incorrect_answer1")
-	private String incorrectAnswer1;
-	
-	@Column(name = "incorrect_answer2")
-	private String incorrectAnswer2;
-	
-	@Column(name = "incorrect_answer3")
-	private String incorrectAnswer3;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.LAZY,
-	            mappedBy = "problem")
-		private List<UsedHelp> usedHelp;
-		
-	@ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "difficulty_id", nullable = false)
-	    private Difficulty difficulty;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.LAZY,
-	            mappedBy = "problem")
-	    private List<Answer> answer;
-		
-	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "test_id", nullable = false)
-		private Test test;
-	
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(
-			name="Test_ready_to_take_Problem",
-			joinColumns = { @JoinColumn(name = "problem_id")},
-			inverseJoinColumns = {@JoinColumn(name = "test_ready_to_take_id")}
-	)
-	Set<TestReadyToTake> testsReadyToTake = new HashSet<>();
-	
-	public Problem() {
-		
-	}
+  @Id
+  @Column(name = "problem_id")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "problem_Sequence")
+  @SequenceGenerator(name = "problem_Sequence", sequenceName = "PROBLEM_SEQ")
+  private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @Column(name = "question")
+  private String question;
 
-	public void setQuestion(String question) {
-		this.question = question;
-	}
+  @Column(name = "correct_answer")
+  private String correctAnswer;
 
-	public String getCorrectAnswer() {
-		return correctAnswer;
-	}
+  @Column(name = "incorrect_answer1")
+  private String incorrectAnswer1;
 
-	public void setCorrectAnswer(String correctAnswer) {
-		this.correctAnswer = correctAnswer;
-	}
+  @Column(name = "incorrect_answer2")
+  private String incorrectAnswer2;
 
-	public String getIncorrectAnswer1() {
-		return incorrectAnswer1;
-	}
+  @Column(name = "incorrect_answer3")
+  private String incorrectAnswer3;
 
-	public void setIncorrectAnswer1(String incorrectAnswer1) {
-		this.incorrectAnswer1 = incorrectAnswer1;
-	}
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problem")
+  private List<UsedHelp> usedHelp;
 
-	public String getIncorrectAnswer2() {
-		return incorrectAnswer2;
-	}
+  @Column(name = "difficulty")
+  private String difficulty;
 
-	public void setIncorrectAnswer2(String incorrectAnswer2) {
-		this.incorrectAnswer2 = incorrectAnswer2;
-	}
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problem")
+  private List<Answer> answer;
 
-	public String getIncorrectAnswer3() {
-		return incorrectAnswer3;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "test_id", nullable = false)
+  private Test test;
 
-	public void setIncorrectAnswer3(String incorrectAnswer3) {
-		this.incorrectAnswer3 = incorrectAnswer3;
-	}
+  @ManyToMany(cascade = { CascadeType.ALL })
+  @JoinTable(name = "Test_ready_to_take_Problem", joinColumns = {
+      @JoinColumn(name = "problem_id") }, inverseJoinColumns = {
+          @JoinColumn(name = "test_ready_to_take_id") })
+  Set<TestReadyToTake> testsReadyToTake = new HashSet<>();
 
-	public List<UsedHelp> getUsedHelp() {
-		return usedHelp;
-	}
+  public Problem() {
 
-	public void setUsedHelp(List<UsedHelp> usedHelp) {
-		this.usedHelp = usedHelp;
-	}
+  }
 
-	public Difficulty getDifficulty() {
-		return difficulty;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public void setDifficulty(Difficulty difficulty) {
-		this.difficulty = difficulty;
-	}
+  public void setQuestion(String question) {
+    this.question = question;
+  }
 
-	public List<Answer> getAnswer() {
-		return answer;
-	}
+  public String getCorrectAnswer() {
+    return this.correctAnswer;
+  }
 
-	public void setAnswer(List<Answer> answer) {
-		this.answer = answer;
-	}
+  public void setCorrectAnswer(String correctAnswer) {
+    this.correctAnswer = correctAnswer;
+  }
 
-	public Test getTest() {
-		return test;
-	}
+  public String getIncorrectAnswer1() {
+    return this.incorrectAnswer1;
+  }
 
-	public void setTest(Test test) {
-		this.test = test;
-	}
+  public void setIncorrectAnswer1(String incorrectAnswer1) {
+    this.incorrectAnswer1 = incorrectAnswer1;
+  }
 
-	public Set<TestReadyToTake> getTestsReadyToTake() {
-		return testsReadyToTake;
-	}
+  public String getIncorrectAnswer2() {
+    return this.incorrectAnswer2;
+  }
 
-	public void setTestsReadyToTake(Set<TestReadyToTake> testsReadyToTake) {
-		this.testsReadyToTake = testsReadyToTake;
-	}
+  public void setIncorrectAnswer2(String incorrectAnswer2) {
+    this.incorrectAnswer2 = incorrectAnswer2;
+  }
 
-	public Long getId() {
-		return id;
-	}
-	public String getQuestion() {
-		return question;
-	}
-	
-	
+  public String getIncorrectAnswer3() {
+    return this.incorrectAnswer3;
+  }
+
+  public void setIncorrectAnswer3(String incorrectAnswer3) {
+    this.incorrectAnswer3 = incorrectAnswer3;
+  }
+
+  public List<UsedHelp> getUsedHelp() {
+    return this.usedHelp;
+  }
+
+  public void setUsedHelp(List<UsedHelp> usedHelp) {
+    this.usedHelp = usedHelp;
+  }
+
+  public String getDifficulty() {
+    return this.difficulty;
+  }
+
+  public void setDifficulty(String difficulty) {
+    this.difficulty = difficulty;
+  }
+
+  public List<Answer> getAnswer() {
+    return this.answer;
+  }
+
+  public void setAnswer(List<Answer> answer) {
+    this.answer = answer;
+  }
+
+  public Test getTest() {
+    return this.test;
+  }
+
+  public void setTest(Test test) {
+    this.test = test;
+  }
+
+  public Set<TestReadyToTake> getTestsReadyToTake() {
+    return this.testsReadyToTake;
+  }
+
+  public void setTestsReadyToTake(Set<TestReadyToTake> testsReadyToTake) {
+    this.testsReadyToTake = testsReadyToTake;
+  }
+
+  public Long getId() {
+    return this.id;
+  }
+
+  public String getQuestion() {
+    return this.question;
+  }
+
 }
