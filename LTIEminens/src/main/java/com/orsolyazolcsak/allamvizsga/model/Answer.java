@@ -15,7 +15,7 @@ public class Answer {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(name = "answer_is_correct")
+  @Column(name = "answer")
   private String answer;
 
   @ManyToOne(fetch = FetchType.LAZY)
@@ -44,6 +44,14 @@ public class Answer {
 
   public void setUser(User user) {
     this.user = user;
+  }
+
+  public String getAnswer() {
+    return this.answer;
+  }
+
+  public void setAnswer(String answer) {
+    this.answer = answer;
   }
 
   public Problem getProblem() {
