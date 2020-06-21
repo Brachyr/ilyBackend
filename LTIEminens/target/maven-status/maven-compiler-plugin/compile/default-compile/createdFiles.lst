@@ -6,10 +6,8 @@ com\orsolyazolcsak\allamvizsga\service\UserServiceImpl.class
 com\orsolyazolcsak\allamvizsga\model\User.class
 com\orsolyazolcsak\allamvizsga\model\Problem.class
 com\orsolyazolcsak\allamvizsga\Application.class
-com\orsolyazolcsak\allamvizsga\model\Help.class
 com\orsolyazolcsak\allamvizsga\repository\TestRepository.class
 com\orsolyazolcsak\allamvizsga\model\UsedHelp.class
-com\orsolyazolcsak\allamvizsga\model\TestReadyToTake.class
 com\orsolyazolcsak\allamvizsga\model\Answer.class
 com\orsolyazolcsak\allamvizsga\service\TestServiceImpl.class
 com\orsolyazolcsak\allamvizsga\model\Test.class

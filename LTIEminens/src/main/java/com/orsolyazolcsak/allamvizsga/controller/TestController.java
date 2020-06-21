@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.orsolyazolcsak.allamvizsga.model.Test;
 import com.orsolyazolcsak.allamvizsga.service.TestService;
 
-@CrossOrigin()
+@CrossOrigin
 @RestController
 @RequestMapping("/test")
 public class TestController {

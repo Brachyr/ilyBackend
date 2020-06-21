@@ -1,87 +1,71 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="used_help")
+@Table(name = "used_help")
 public class UsedHelp {
-	@Id
-	@Column(name = "used_help_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "help_id", nullable = false)
-		private Help help;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "test_ready_to_take_id", nullable = false)
-		private TestReadyToTake testReadyToTake;
-		
-	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "user_id", nullable = false)
-		private User user;
-		
-	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "problem_id", nullable = false)
-		private Problem problem;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "answer_id", nullable = false)
-	private Problem answer;
-		
-		
-	public UsedHelp() {
-		
-	}
+  @Id
+  @Column(name = "used_help_id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-	public Long getId() {
-		return id;
-	}
+  @Column(name = "help")
+  private String help;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
 
-	public Help getHelp() {
-		return help;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "problem_id", nullable = false)
+  private Problem problem;
 
-	public void setHelp(Help help) {
-		this.help = help;
-	}
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "answer_id", nullable = false)
+  private Problem answer;
 
-	public TestReadyToTake getTestReadyToTake() {
-		return testReadyToTake;
-	}
+  public UsedHelp() {
 
-	public void setTestReadyToTake(TestReadyToTake testReadyToTake) {
-		this.testReadyToTake = testReadyToTake;
-	}
+  }
 
-	public User getUser() {
-		return user;
-	}
+  public Long getId() {
+    return this.id;
+  }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public Problem getProblem() {
-		return problem;
-	}
+  public User getUser() {
+    return this.user;
+  }
 
-	public void setProblem(Problem problem) {
-		this.problem = problem;
-	}
+  public void setUser(User user) {
+    this.user = user;
+  }
 
-	public Problem getAnswer() {
-		return answer;
-	}
+  public Problem getProblem() {
+    return this.problem;
+  }
 
-	public void setAnswer(Problem answer) {
-		this.answer = answer;
-	}
+  public void setProblem(Problem problem) {
+    this.problem = problem;
+  }
+
+  public Problem getAnswer() {
+    return this.answer;
+  }
+
+  public void setAnswer(Problem answer) {
+    this.answer = answer;
+  }
 }

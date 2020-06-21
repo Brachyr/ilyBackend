@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface ProblemService {
 
-	Set<Problem> findAll();
+	List<Problem> findAll();
 
 	Problem createNewProblem(Problem newProblem);
 

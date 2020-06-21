@@ -1,8 +1,6 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,17 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Problem {
   @Id
   @Column(name = "problem_id")
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
   @Column(name = "question")
@@ -52,12 +47,6 @@ public class Problem {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "test_id", nullable = false)
   private Test test;
-
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(name = "Test_ready_to_take_Problem", joinColumns = {
-      @JoinColumn(name = "problem_id") }, inverseJoinColumns = {
-          @JoinColumn(name = "test_ready_to_take_id") })
-  Set<TestReadyToTake> testsReadyToTake = new HashSet<>();
 
   public Problem() {
 
@@ -133,14 +122,6 @@ public class Problem {
 
   public void setTest(Test test) {
     this.test = test;
-  }
-
-  public Set<TestReadyToTake> getTestsReadyToTake() {
-    return this.testsReadyToTake;
-  }
-
-  public void setTestsReadyToTake(Set<TestReadyToTake> testsReadyToTake) {
-    this.testsReadyToTake = testsReadyToTake;
   }
 
   public Long getId() {
