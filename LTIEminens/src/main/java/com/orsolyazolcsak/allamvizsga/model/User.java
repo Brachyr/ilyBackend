@@ -23,8 +23,7 @@ import javax.persistence.Table;
 @Table(name = "user_eminens")
 public class User {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_Sequence")
-  @SequenceGenerator(name = "user_Sequence", sequenceName = "USER_SEQ")
+  @GeneratedValue(strategy=GenerationType.AUTO)
   private Long id;
 
   @Column(name = "username")

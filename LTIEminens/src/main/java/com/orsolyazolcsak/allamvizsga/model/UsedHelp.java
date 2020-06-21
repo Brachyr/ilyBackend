@@ -8,8 +8,7 @@ import javax.persistence.*;
 public class UsedHelp {
 	@Id
 	@Column(name = "used_help_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "usedHelp_Sequence")
-	@SequenceGenerator(name = "usedHelp_Sequence", sequenceName = "USEDHELP_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 	
 	

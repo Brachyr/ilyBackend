@@ -15,8 +15,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Help {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "difficulty_Sequence")
-    @SequenceGenerator(name = "difficulty_Sequence", sequenceName = "DIFFICULTY_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 	
 	@Column(name = "name")

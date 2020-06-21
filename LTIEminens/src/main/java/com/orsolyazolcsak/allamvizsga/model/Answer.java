@@ -17,8 +17,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Answer {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "answer_Sequence")
-    @SequenceGenerator(name = "answer_Sequence", sequenceName = "ANSWER_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 	
 	@Column(name = "answer_is_correct")

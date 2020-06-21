@@ -22,8 +22,7 @@ import javax.persistence.SequenceGenerator;
 public class Problem {
   @Id
   @Column(name = "problem_id")
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "problem_Sequence")
-  @SequenceGenerator(name = "problem_Sequence", sequenceName = "PROBLEM_SEQ")
+  @GeneratedValue(strategy=GenerationType.AUTO)
   private Long id;
 
   @Column(name = "question")

@@ -11,8 +11,7 @@ import javax.persistence.*;
 public class TestReadyToTake {
     @Id
     @Column(name = "test_ready_to_take_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "testReadyToTake_Sequence")
-    @SequenceGenerator(name = "testReadyToTake_Sequence", sequenceName = "TESTREADYTOTAKE_SEQ")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
