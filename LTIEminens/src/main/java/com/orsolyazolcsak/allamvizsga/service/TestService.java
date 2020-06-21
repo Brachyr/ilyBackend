@@ -11,4 +11,10 @@ public interface TestService {
   void createNewTest(Test newTest);
 
   Optional<Test> findRunning();
+  
+  Optional<Test> findById(long id);
+  
+  void delete(Test test);
+  
+  void deleteById(long id);
 }

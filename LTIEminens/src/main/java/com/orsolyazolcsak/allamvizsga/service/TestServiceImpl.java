@@ -30,4 +30,19 @@ public class TestServiceImpl implements TestService {
   public Optional<Test> findRunning() {
     return this.findAll().stream().filter(t -> "on".equals(t.getState())).findFirst();
   }
+
+  @Override
+  public Optional<Test> findById(long id) {
+    return this.repository.findById(id);
+  }
+
+  @Override
+  public void delete(Test test) {
+    this.repository.delete(test);
+  }
+
+  @Override
+  public void deleteById(long id) {
+    this.repository.deleteById(id);
+  }
 }
