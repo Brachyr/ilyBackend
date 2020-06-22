@@ -14,4 +14,6 @@ public interface AnswerService {
   public List<Answer> findByProblemId(long problemID);
 
   public void saveAnswer(Answer answer);
+
+  public List<Answer> findForLastProblem();
 }
