@@ -40,16 +40,17 @@ public class AnswerController {
   @GetMapping("/{problemID}")
   public List<UserAnswer> getUserAnswers(@PathVariable long problemID) {
     return this.answerService.findByProblemId(problemID).stream() //
-        .map(answer -> new UserAnswer(answer.getUser().getFullName(), answer.getAnswer())) //
+        .map(answer -> new UserAnswer(this.userService.findById(
+            answer.getUserId()).get().getFullName(), answer.getAnswer())) //
         .collect(Collectors.toList());
   }
 
   @PostMapping
   public void saveAnswer(AnswerDao answerDao) {
     Answer answer = new Answer();
-    answer.setAnswer(answerDao.answer);
-    answer.setProblem(this.problemService.findById(answerDao.problem_id).get());
-    answer.setUser(this.userService.findById(answerDao.user_id).get());
+    answer.setAnswer(answerDao.getAnswer());
+    answer.setProblemId(answerDao.getProblemId());
+    answer.setUserId(answerDao.getUserId());
     this.answerService.saveAnswer(answer);
   }
 }

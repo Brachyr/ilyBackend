@@ -23,6 +23,9 @@ public class RegisterController {
 
   @PostMapping(consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
   public ResponseEntity<User> newUser(UserDao newUserDao) {
+    if (this.userService.findByUsername(newUserDao.getUsername()).isPresent()) {
+      return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+    }
     User newUser = new User();
     newUser.setRole(newUserDao.getRole());
     newUser.setUsername(newUserDao.getUsername());

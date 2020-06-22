@@ -41,9 +41,6 @@ public class Problem {
   @Column(name = "difficulty")
   private String difficulty;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problem")
-  private List<Answer> answer;
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "test_id", nullable = false)
   private Test test;
@@ -106,14 +103,6 @@ public class Problem {
 
   public void setDifficulty(String difficulty) {
     this.difficulty = difficulty;
-  }
-
-  public List<Answer> getAnswer() {
-    return this.answer;
-  }
-
-  public void setAnswer(List<Answer> answer) {
-    this.answer = answer;
   }
 
   public Test getTest() {

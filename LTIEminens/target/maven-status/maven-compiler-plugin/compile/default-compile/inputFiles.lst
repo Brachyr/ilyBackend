@@ -3,6 +3,7 @@ C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\con
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Answer.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\UsedHelp.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\UserDao.java
+C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\AnswerDao.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\TestServiceImpl.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\controller\RegisterController.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\AnswerRepository.java
@@ -15,6 +16,7 @@ C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\rep
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\LoginUserDao.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ProblemServiceImpl.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\AnswerService.java
+C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\UserAnswer.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\TestService.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\controller\TestController.java
 C:\bash\o\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\UserService.java

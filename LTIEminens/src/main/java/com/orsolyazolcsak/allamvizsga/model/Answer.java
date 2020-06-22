@@ -2,29 +2,24 @@ package com.orsolyazolcsak.allamvizsga.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Answer {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  private long id;
 
   @Column(name = "answer")
   private String answer;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id", nullable = false)
-  private User user;
+  @Column(name = "user_id")
+  private long userId;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "problem_id", nullable = false)
-  private Problem problem;
+  @Column(name = "problem_id")
+  private long problemId;
 
   public Answer() {
 
@@ -38,14 +33,6 @@ public class Answer {
     this.id = id;
   }
 
-  public User getUser() {
-    return this.user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
-
   public String getAnswer() {
     return this.answer;
   }
@@ -54,11 +41,19 @@ public class Answer {
     this.answer = answer;
   }
 
-  public Problem getProblem() {
-    return this.problem;
+  public long getUserId() {
+    return this.userId;
   }
 
-  public void setProblem(Problem problem) {
-    this.problem = problem;
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
+
+  public long getProblemId() {
+    return this.problemId;
+  }
+
+  public void setProblemId(long problemId) {
+    this.problemId = problemId;
   }
 }

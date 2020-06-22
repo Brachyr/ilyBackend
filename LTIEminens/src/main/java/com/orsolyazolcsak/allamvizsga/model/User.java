@@ -40,9 +40,6 @@ public class User {
   private String role;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-  private List<Answer> answer;
-
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
   private List<UsedHelp> usedHelp;
 
   public User() {
@@ -63,14 +60,6 @@ public class User {
 
   public void setSalt(String salt) {
     this.salt = salt;
-  }
-
-  public List<Answer> getAnswer() {
-    return this.answer;
-  }
-
-  public void setAnswer(List<Answer> answer) {
-    this.answer = answer;
   }
 
   public List<UsedHelp> getUsedHelp() {
@@ -127,31 +116,5 @@ public class User {
       System.out.println("Error in setPassword: generateSalt");
     }
 
-  }
-
-  /**
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-    StringBuilder builder = new StringBuilder();
-    builder.append("User [id=");
-    builder.append(this.id);
-    builder.append(", username=");
-    builder.append(this.username);
-    builder.append(", password=");
-    builder.append(this.password);
-    builder.append(", salt=");
-    builder.append(this.salt);
-    builder.append(", fullName=");
-    builder.append(this.fullName);
-    builder.append(", role=");
-    builder.append(this.role);
-    builder.append(", answer=");
-    builder.append(this.answer);
-    builder.append(", usedHelp=");
-    builder.append(this.usedHelp);
-    builder.append("]");
-    return builder.toString();
   }
 }

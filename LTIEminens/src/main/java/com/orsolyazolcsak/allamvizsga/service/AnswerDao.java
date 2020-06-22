@@ -6,11 +6,11 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
 public class AnswerDao {
-  public String answer;
+  private String answer;
 
-  public long problem_id;
+  private long userId;
 
-  public long user_id;
+  private long problemId;
 
   public String getAnswer() {
     return this.answer;
@@ -20,19 +20,19 @@ public class AnswerDao {
     this.answer = answer;
   }
 
-  public long getProblem_id() {
-    return this.problem_id;
+  public long getUserId() {
+    return this.userId;
   }
 
-  public void setProblem_id(long problem_id) {
-    this.problem_id = problem_id;
+  public void setUserId(long userId) {
+    this.userId = userId;
   }
 
-  public long getUser_id() {
-    return this.user_id;
+  public long getProblemId() {
+    return this.problemId;
   }
 
-  public void setUser_id(long user_id) {
-    this.user_id = user_id;
+  public void setProblemId(long problemId) {
+    this.problemId = problemId;
   }
 }
